@@ -1,0 +1,32 @@
+vers=`cat ../INTRINSICS/version`
+title=`cat ../INTRINSICS/title`
+long_title=`cat ../INTRINSICS/long_title`
+cmd="/bin/echo -n -e"
+file="version.h"
+
+${cmd} "Generating ${file}....."
+
+rm -f ${file}
+
+# Header
+${cmd} "/*\n\tversion.h\n*/\n" >> ${file}
+
+# New line for spacing
+${cmd} "\n" >> ${file}
+
+# Anti-(multiple-include)-structure [start]
+${cmd} "#ifndef __VERSION_H__\n#define __VERSION_H__\n\n" >> ${file}
+
+# Define the version symbols
+${cmd} "#define LAGII_TITLE\t\t\"${title}\"\n" >> ${file}
+${cmd} "#define LAGII_LONG_TITLE\t\"${long_title}\"\n" >> ${file}
+${cmd} "#define LAGII_VERSION\t\t\"${vers}\"\n" >> ${file}
+
+# New line for spacing
+${cmd} "\n" >> ${file}
+
+# Anti-(multiple-include)-structure [end]
+${cmd} "#endif\t// __VERSION_H__\n" >> ${file}
+
+# All done!
+${cmd} "done!\n"

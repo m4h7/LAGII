@@ -1,0 +1,52 @@
+DRIVER-HOWTO
+============
+
+So, you wanna write a driver for LAGII, eh? OK, it's easy:
+
+
+Interface
+---------
+
+typedef struct {
+	char *name;
+
+	// Graphics:
+	int (*init) (void);
+	void (*close) (void);
+	void (*blit) (l_byte *buf);
+
+	// Keyboard:
+	void (*key_init) (void);
+	void (*key_close) (void);
+	void (*key_flush) (void);
+	void (*key_update) (void);
+} driver_t;
+
+
+The fields explained:
+
+	name		The name of your driver
+	init		A function that initializes the graphics to a
+			320x200 mode
+	close		A function that closes the graphics subsystem
+	blit		A function that copies the graphics buffer 'buf'
+			onto the screen. 'buf' is row-major, one byte per
+			pixel, 320 pixels wide and 200 pixels high.
+	key_init	A function that initializes the keyboard driver
+	key_close	A function that closes the keyboard subsystem
+	key_flush	A function that removes all pending keystrokes
+	key_update	A function that processes all pending keystrokes,
+			and calls the external function:
+
+			void event_key_handler (int scancode, int press);
+
+			Where 'scancode' is the key from "keyboard.h", and
+			press => (1=press, 0=release)
+
+
+Once these functions are created, add a driver_t entry into
+"driver_main.c". To use your driver, change the appropriate line in
+driver_init(), in "driver_main.c".
+
+That's all there is to it! If you don't fully understand, have a look at
+the existing SVGALib driver (driver_svgalib.*)

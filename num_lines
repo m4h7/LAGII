@@ -1,0 +1,3 @@
+FILES=`echo -e src/*.{c,h}`
+numl=`wc -l ${FILES} | grep -G total | tr -s '[ ]' '\012' | grep -G [0-9]`
+echo -e "Lines of source code:${numl}"

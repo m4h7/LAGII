@@ -1,0 +1,40 @@
+SUBDIRS = 	\
+		src
+
+MAKE = make
+
+all:
+	@dlist='$(SUBDIRS)' ; \
+	echo -e "\t\t/=============\\" ; \
+	echo -e "\t\t| Making..... |" ; \
+	echo -e "\t\t\\=============/" ; \
+	for subdir in $$dlist ; do \
+		(cd $$subdir && $(MAKE) all) ; \
+	done ;
+
+depend:
+	@dlist='$(SUBDIRS)' ; \
+	echo -e "\t\t/==============================\\" ; \
+	echo -e "\t\t| Generating Dependancies..... |" ; \
+	echo -e "\t\t\\==============================/" ; \
+	for subdir in $$dlist ; do \
+		(cd $$subdir && $(MAKE) depend) ; \
+	done ;
+
+install:
+	@dlist='$(SUBDIRS)' ; \
+	echo -e "\t\t/=================\\" ; \
+	echo -e "\t\t| Installing..... |" ; \
+	echo -e "\t\t\\=================/" ; \
+	for subdir in $$dlist ; do \
+		(cd $$subdir && $(MAKE) install) ; \
+	done ;
+
+clean:
+	@dlist='$(SUBDIRS)' ; \
+	echo -e "\t\t/===============\\" ; \
+	echo -e "\t\t| Cleaning..... |" ; \
+	echo -e "\t\t\\===============/" ; \
+	for subdir in $$dlist ; do \
+		(cd $$subdir && $(MAKE) clean) ; \
+	done ;

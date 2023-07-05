@@ -1,0 +1,58 @@
+CFLAGS1 = -Wall -Wmissing-prototypes -fstrength-reduce -pedantic
+CFLAGS2 = -fshort-enums -Werror -m486
+#CFLAGS3 = -g -pg -g
+CFLAGS3 = -O2
+
+# Normal compile
+CFLAGS = $(CFLAGS1) $(CFLAGS2) $(CFLAGS3)
+LDFLAGS = @LDFLAGS@ # -pg -g
+
+LIBS = @LIBS@
+#LIBS = @LIBS@ -lefence
+
+OBJ1 = lagii.o events.o logic.o object.o picture.o resource.o view.o
+OBJ2 = text.o virtual_machine.o vm_test.o vm_action.o
+OBJ3 = graphics.o lzw.o mem.o menu.o utility.o sshot.o
+OBJ4 = driver_main.o driver_svgalib.o
+OBJS = $(OBJ1) $(OBJ2) $(OBJ3) $(OBJ4)
+
+INCLUDES = -I/usr/include -I.
+
+all:		lagii
+
+install:
+		chmod u+s lagii
+		cp lagii @prefix@/bin
+
+clean:
+		rm *.o -f
+		rm lagii -f
+		rm version.h -f
+		rm core -f
+		rm depend.1 -f
+
+lagii:		$(OBJS)
+		@CC@ $(LDFLAGS) $(OBJS) $(INCLUDES) $(LIBS) -o lagii
+
+version.h:	../INTRINSICS/version
+		./make_version
+
+.c.o:
+		@CC@ $(CFLAGS) -o $@ -c $<
+
+
+################
+# DEPENDANCIES #
+################
+
+depend:	version.h
+	@echo -ne "Generating dependancies....."
+	@gcc -MM $(OBJS:.o=.c) > depend.1
+	@echo -ne "done!\n"
+
+depend.1:
+
+# Remove error messages while creating dependancies
+ifeq (depend.1, $(wildcard depend.1))
+include depend.1
+endif

@@ -1,0 +1,93 @@
+LAGII Frequently Asked Questions
+
+By: XoXus
+Last updated: 28 April 1999
+**********************************************************************
+Contents:
+
+1. What does LAGII stand for?
+2. What is AGI?
+3. It compiled okay, but where'd the binary go?
+4. What AGI games can I play?
+5. What state is it at?
+6. What kind of weird stuff happens?
+**********************************************************************
+1. What does LAGII stand for?
+
+It stands for "Linux AGI Interpreter". If you expanded it fully, however,
+you'd get "Linux Adventure Game Interpreter Interpreter", which is very
+naughty of me to do. All correspondence on this matter will be redirected
+to /dev/null.
+**********************************************************************
+2. What is AGI?
+
+AGI stands for "Adventure Game Interpreter". It was invented by Sierra in
+the 1980's, and used by them to create many adventure games, including the
+Kings Quest series (1-4).
+**********************************************************************
+3. It compiled okay, but where'd the binary go?
+
+The 'lagii' binary is created in the 'src' directory. You can symlink it
+to somewhere else in your path to make life easier for yourself by
+(Assuming that /usr/bin is in your path, and you expanded the archive into
+the /usr/local/src directory):
+
+	ln -s /usr/bin/lagii /usr/local/src/LAGII-0.0.7/src/lagii
+**********************************************************************
+4. What AGI games can I play?
+
+At the moment, the following games are recognised:
+
+Title			Version		AGI Version
+=====			=======		===========
+Space Quest 1		2.2		2.917
+Space Quest 2		2.0F		2.936
+
+Police Quest 1		2.0G		2.917
+
+Kings Quest 1		2.0F		2.917
+Kings Quest 2		2.2		2.917
+Kings Quest 3		1.01		2.272
+
+Manhunter 2		3.0?		3.002.149
+
+Black Cauldron		2.00		2.439
+Leisure Suit Larry 1	1.00		2.440
+Mixed Up Mother Goose	?.??		2.915
+
+AGI Xmas		?.??		2.272
+Demo Pack 1		1.0		2.915
+Demo Pack 2		1.0		2.915
+Demo Pack 3		1.0		2.917
+
+Acidopolis		?.??		2.917
+Ruby Cast		0.2		2.936
+
+NOTE:
+	None of the version 3 games work AT ALL! (My LZW code is screwed)
+**********************************************************************
+5. What state is it at?
+
+LAGII is still under heavy development. AGI v3 support is practically
+non-existant, but the AGI v2 code works quite well. Inventory support is
+extremely limited, with no opportunity to select items. Menu support is
+fine. Text input is still not quite right. Doors open and shut at the
+wrong times. Special input (e.g. Space Quest start) now works! Overall, it 
+can still be pretty high on the Weird-Shitometer. (See Question 6)
+**********************************************************************
+6. What kind of weird stuff happens?
+
+(The Weird-Shitometer Rating is out of 5)
+
+Weird Thing			Weird-Shitometer Rating
+===========			=======================
+] You can slide around while		!!
+  crouched (KQ1)
+] MUMG does not work at all		!!
+] The wave doesn't go away (KQ2)	!!!!
+] You get killed about 10 seconds	!!!!
+  into the game (KQ3)
+] The quiz at the start of LSL1		!!
+  is screwy (Alt-X through it)
+] Sariens moonwalk everywhere (SQ1)	!!!
+**********************************************************************

@@ -1,0 +1,11 @@
+/*
+	config.h
+*/
+
+#ifndef __CONFIG_H__
+#define __CONFIG_H__
+
+// If this is defined, no giflib available (or rather, no libungif)
+#undef NO_GIFLIB
+
+#endif	// __CONFIG_H__

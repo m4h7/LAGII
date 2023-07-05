@@ -1,0 +1,72 @@
+LAGII 0.0.7 (28 April 1999)
+This software is copyright (c) 1998, 1999 XoXus.
+
+The author accepts no responsibility for anything this software may or may
+not do to your machine, other software on your machine, yourself, your
+family, your friends, or anything else.  There is no guarantee placed on
+the software, it's stability, its usefulness in operation, or satisfaction
+of the user after using the software.
+
+
+FIRSTLY:
+
+	Make sure you have a quick skim-read of the FAQ file!
+
+
+CONTACT:
+
+	XoXus <xoxus@usa.net>
+
+
+CREDITS:
+
+	* Peter Kelly & Lance Ewing
+		The AGI specs
+			(http://www.ozemail.com.au/~ptrkelly/agi/specs)
+	* Dark Fiber - for some assistance with WeirdStuff(tm)
+		Sarien
+			(http://homepages.ihug.com.au/~entropy/agi)
+
+
+COMPILING:
+
+	Simply type:
+		./configure
+	Then:
+		make depend
+	And:
+		make
+
+	Easy...
+
+
+KEYS WHILE RUNNING:
+
+	F11 - Take a screenshot (filename is "xxx-#.gif", where 'xxx' is
+		the short title, and '#' is an auto-incrementing number)
+
+	F12 - Instant exit (if this doesn't work, pray)
+
+	PrintScreen - Toggle showing of priority screen
+
+	ScrollLock - Toggle showing of object information
+
+	Pause - Toggle turbo mode
+
+
+RUNNING:
+
+	(The binary is created in the 'src' directory)
+
+	The syntax is:
+
+		lagii [-v] [-h] [-d <dump-file>] [-t] [-o] <game-dir>
+
+	Where:
+
+	-v	Print version information
+	-h	Show help screen
+	-d	Decompile LOGIC resources to <dump-file> as they are run
+	-t	Turbo mode (quite silly)
+	-o	Show object information
+<game-dir>	Directiory holding AGI data files
